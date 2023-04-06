@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang = "en-us">
+
+	<head>
+
+		<title>Shading</title>
+		<link rel = "icon" href = "../Resources/Icons/MainIcon.ico" type = "image/x-icon">
+
+		<meta charset = "utf-8">
+
+		<meta name = "autor" content = "Florescu Bogdan-Ilie">
+		<meta name = "description" content = "A page about 3D rendering.">
+		<meta name = "keywords" content = "3D rendering 3D-rendering graphics">
+
+		<link rel = "stylesheet" href = "../general.css" type = "text/css">
+		<link rel = "stylesheet" href = "./index.css" type = "text/css">
+
+		<base href = "./">
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<nav>
+
+				<div>
+					<a href = "../index.html">Home</a>
+				</div>
+				<div>
+					<a href = "../Geometry/index.html">Geometry</a>
+				</div>
+				<div>
+					<a href = "./index.html">Shading</a>
+				</div>
+
+			</nav>
+
+			<h1>Shading</h1>
+
+		</header>
+
+		<main>
+
+			<section>
+
+				<h2>Introduction</h2>
+
+				<p>There were a few techniques over the years to shade 3D models. I would like to show them all and present some differences.</p>
+
+			</section>
+
+			<section>
+
+				<h2>1. Phong shading</h2>
+
+				<p>This is one of the first ones that was quite widly spread and used. It is a crude aproximation, but it gave good enought results.</p>
+
+				<div class = "CenteringDivs">
+					<img id = "Phong" src = "https://learnopengl.com/img/lighting/basic_lighting_phong.png" alt = "Phong shading image.">
+				</div>
+
+			</section>
+
+			<section>
+
+				<h2>2. Blinn-Phong shading</h2>
+
+				<p>The Phong aproach was quite flawed when it came to specular lighting on small angles, so it was later improved to <a href = "https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Blinn-Phong</a></p>
+
+				<div class = "CenteringDivs">
+					<img id = "Blinn-Phong" src = "https://learnopengl.com/img/advanced-lighting/advanced_lighting_comparrison.png" alt = "Blinn-Phong shading image.">
+				</div>
+
+			</section>
+
+			<section>
+
+				<h2>3. PBR with IBL shading</h2>
+
+				<p><a href = "https://learnopengl.com/PBR/Theory">PBR</a> is the best that we got so far. As the name suggests, it is physically based. It respects the laws of conservation, the microfacet model and the Fresnel effect.</p>
+
+				<div class = "CenteringDivs">
+					<img id = "PBR" src = "https://learnopengl.com/img/pbr/ibl_specular_result_textured.png" alt = "PBR with IBL shading image.">
+				</div>
+
+			</section>
+
+		</main>
+
+		<footer>Find me and my work here: <a href = "https://github.com/Bogdy555/Learn-3D">Bogdy555 on GitHub</a>.</footer>
+
+	</body>
+
+</html>

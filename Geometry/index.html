@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang = "en-us">
+
+	<head>
+
+		<title>Geometry</title>
+		<link rel = "icon" href = "../Resources/Icons/MainIcon.ico" type = "image/x-icon">
+
+		<meta charset = "utf-8">
+
+		<meta name = "autor" content = "Florescu Bogdan-Ilie">
+		<meta name = "description" content = "A page about 3D rendering.">
+		<meta name = "keywords" content = "3D rendering 3D-rendering graphics">
+
+		<link rel = "stylesheet" href = "../general.css" type = "text/css">
+		<link rel = "stylesheet" href = "./index.css" type = "text/css">
+
+		<base href = "./">
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<nav>
+
+				<div>
+					<a href = "../index.html">Home</a>
+				</div>
+				<div>
+					<a href = "./index.html">Geometry</a>
+				</div>
+				<div>
+					<a href = "../Shading/index.html">Shading</a>
+				</div>
+
+			</nav>
+
+			<h1>Geometry</h1>
+
+		</header>
+
+		<main>
+
+			<section>
+
+				<h2>Introduction</h2>
+
+				<p>The most important thing when it comes to 3D rasterized graphics is the concept of a transformation. It is very important to understand that any matrix represents a 3D transformation (like rotation, scaling etc.).</p>
+
+				<p>Here I will link to a wiki page that talks in details about multiple matrix transformations.</p>
+	
+				<div class = "CenteringDivs">
+					<iframe src = "https://en.wikipedia.org/wiki/Transformation_matrix"></iframe>
+				</div>
+	
+				<p>There are multiple coordinates systems that need to be understood. Let's have a look.</p>
+
+				<div class = "CenteringDivs">
+					<img id = "SpacesImage" src = "https://learnopengl.com/img/getting-started/coordinate_systems.png" alt = "Local space picture.">
+				</div>
+
+			</section>
+
+			<section>
+
+				<h2>1. Local space</h2>
+
+				<p>This space is relative to the center of the 3D model. Once you load the <a href = "https://en.wikipedia.org/wiki/Wavefront_.obj_file">wavefront obj</a> file you recieve the vectors in local space.</p>
+
+			</section>
+
+			<section>
+
+				<h2>2. World space (model matrix)</h2>
+
+				<p>This referes to the the position of the model after it was placed in the world.</p>
+
+			</section>
+
+			<section>
+
+				<h2>3. View space (view matrix)</h2>
+
+				<p>Once the object was placed in the world, it has to be offset acording to the camera position and orientation. For example if you move your head to the right is like every thing moved to the left. In computer graphics you really are the center of the universe.</p>
+
+			</section>
+
+			<section>
+
+				<h2>4. Clip space (projection matrix)</h2>
+
+				<p>This space is kind of abstract. Since distance is not linear on a projection of a 3D space on a 2D plane we have to use some neat maths. We save the z component in a 4-th dimension and then use it to devide each component by it.</p>
+
+			</section>
+
+			<section>
+
+				<h2>5. Screen space</h2>
+
+				<p>Once the perspective division is done, the resulted values are in screen space, witch means that we could just render a triangle on the screen where those points happen to be.</p>
+
+			</section>
+
+		</main>
+
+		<footer>Find me and my work here: <a href = "https://github.com/Bogdy555/Learn-3D">Bogdy555 on GitHub</a>.</footer>
+
+	</body>
+
+</html>
