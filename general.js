@@ -1,18 +1,47 @@
 const NullTheme = 0;
 const DarkTheme = 1;
-const LightTheme = 2;
+const WhiteTheme = 2;
 
-function OnThemeButtonClick(EventData)
+function ClearFlash()
 {
-	EventData.stopPropagation();
+	document.querySelectorAll("*").forEach
+	(
+		(Elem) =>
+		{
+			if (localStorage.getItem("Theme") == DarkTheme)
+			{
+				Elem.style.backgroundColor = "rgb(30, 30, 30)";
+			}
+			else if (localStorage.getItem("Theme") == WhiteTheme)
+			{
+				Elem.style.backgroundColor = "rgb(200, 200, 200)";
+			}
+		}
+	);
+}
 
+function Flash()
+{
+	document.querySelectorAll("*").forEach
+	(
+		(Elem) =>
+		{
+			Elem.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+		}
+	);
+
+	setTimeout(ClearFlash, Math.random() * 100 + 200);
+}
+
+function SwapTheme()
+{
 	let Theme = localStorage.getItem("Theme");
 
 	switch (Theme)
 	{
 	case `${DarkTheme}`:
 	{
-		localStorage.setItem("Theme", LightTheme);
+		localStorage.setItem("Theme", WhiteTheme);
 
 		let MyDom = document.querySelectorAll("*");
 
@@ -27,7 +56,7 @@ function OnThemeButtonClick(EventData)
 
 		break;
 	}
-	case `${LightTheme}`:
+	case `${WhiteTheme}`:
 	{
 		localStorage.setItem("Theme", DarkTheme);
 
@@ -45,6 +74,21 @@ function OnThemeButtonClick(EventData)
 		break;
 	}
 	}
+}
+
+function OnBodyKeyPress(EventData)
+{
+	if (EventData.key == "t")
+	{
+		SwapTheme();
+	}
+}
+
+function OnThemeButtonClick(EventData)
+{
+	EventData.stopPropagation();
+
+	SwapTheme();
 }
 
 function OnLoad()
@@ -77,7 +121,7 @@ function OnLoad()
 			}
 		);
 	}
-	else if (localStorage.getItem("Theme") == LightTheme)
+	else if (localStorage.getItem("Theme") == WhiteTheme)
 	{
 		document.querySelectorAll("*").forEach
 		(
@@ -95,4 +139,11 @@ if (localStorage.getItem("Theme") == NullTheme)
 	localStorage.setItem("Theme", DarkTheme);
 }
 
+let Footer = document.querySelector("footer");
+Footer.parentNode.removeChild(Footer);
+
+document.body.addEventListener("keydown", OnBodyKeyPress);
+
 window.onload = OnLoad;
+
+setInterval(Flash, 2000);
