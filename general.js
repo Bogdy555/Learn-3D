@@ -152,7 +152,7 @@ if (Today.toString().split(" ")[2] == 1)
 	alert("Welcome");
 }
 
-if (localStorage.getItem("Theme") == NullTheme)
+if (!localStorage.getItem("Theme"))
 {
 	localStorage.setItem("Theme", DarkTheme);
 }
