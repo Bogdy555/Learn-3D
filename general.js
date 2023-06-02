@@ -33,7 +33,7 @@ function Flash()
 	setTimeout(ClearFlash, Math.random() * 100 + 200);
 }
 
-function SwapTheme()
+function SwapTheme(DomObj)
 {
 	let Theme = localStorage.getItem("Theme");
 
@@ -54,6 +54,8 @@ function SwapTheme()
 			}
 		);
 
+		DomObj.innerHTML = "Switch theme to dark";
+
 		break;
 	}
 	case `${WhiteTheme}`:
@@ -71,6 +73,8 @@ function SwapTheme()
 			}
 		);
 
+		DomObj.innerHTML = "Switch theme to white";
+
 		break;
 	}
 	}
@@ -80,7 +84,7 @@ function OnBodyKeyPress(EventData)
 {
 	if (EventData.key == "t")
 	{
-		SwapTheme();
+		SwapTheme(document.querySelector(".ThemeButton"));
 	}
 }
 
@@ -88,30 +92,36 @@ function OnThemeButtonClick(EventData)
 {
 	EventData.stopPropagation();
 
-	SwapTheme();
+	SwapTheme(EventData.target);
 }
 
 function OnLoad()
 {
-	let ThemeButton = document.createElement("div");
+	let ThemeButton = document.createElement("button");
 
 	ThemeButton.addEventListener("click", OnThemeButtonClick);
-	ThemeButton.setAttribute("id", "ThemeButton");
+	ThemeButton.classList.add("ThemeButton");
 
 	ThemeButton.style.width = "100%";
 	ThemeButton.style.height = "3em";
 	ThemeButton.style.backgroundColor = "rgb(20, 20, 20)";
 
-	ThemeButton.innerHTML = "Switch theme";
 	ThemeButton.style.color = "rgb(80, 140, 100)";
 	ThemeButton.style.display = "flex";
 	ThemeButton.style.alignItems = "center";
 	ThemeButton.style.justifyContent = "center";
+	ThemeButton.style.borderRadius = "20px";
+	ThemeButton.style.borderWidth = "0px";
 
 	document.body.appendChild(ThemeButton);
 
+	let ComputedStyle = window.getComputedStyle(ThemeButton);
+
+	console.log(ComputedStyle.height);
+
 	if (localStorage.getItem("Theme") == DarkTheme)
 	{
+		ThemeButton.innerHTML = "Switch theme to white";
 		document.querySelectorAll("*").forEach
 		(
 			(Elem) =>
@@ -123,6 +133,7 @@ function OnLoad()
 	}
 	else if (localStorage.getItem("Theme") == WhiteTheme)
 	{
+		ThemeButton.innerHTML = "Switch theme to dark";
 		document.querySelectorAll("*").forEach
 		(
 			(Elem) =>
@@ -132,6 +143,13 @@ function OnLoad()
 			}
 		);
 	}
+}
+
+let Today = new Date();
+
+if (Today.toString().split(" ")[2] == 1)
+{
+	alert("Welcome");
 }
 
 if (localStorage.getItem("Theme") == NullTheme)
